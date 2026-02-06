@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>臺中工務段人事室專書閱讀區</title>
+    <meta name="description" content="臺中工務段人事室專書閱讀區 - 年度選書、歷年書目、借閱管理系統">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="header-title">臺中工務段人事室專書閱讀區</h1>
+            <p class="header-description">
+                為落實終身學習理念，提升閱讀風氣，配合「公務人員專書閱讀推廣活動計畫」，持續購置國家文官學院年度選書書目，俾提供同仁借閱暨辦理讀書心得分享、專書導讀，增強終身學習動能。
+            </p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="annual-selection">114年度選書</button>
+            <button class="tab-btn" data-tab="historical-books">歷年書目</button>
+            <button class="tab-btn" data-tab="my-borrowing">我的借閱</button>
+        </nav>
+
+        <!-- Tab Content -->
+        <div class="tab-content-wrapper">
+            <!-- Annual Selection Tab -->
+            <div id="annual-selection" class="tab-content active">
+                <div class="books-list">
+                    <!-- Books will be loaded dynamically from books.json -->
+                    <div class="loading-state" style="text-align: center; padding: 3rem;">
+                        <p>正在載入書籍資料...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historical Books Tab -->
+            <div id="historical-books" class="tab-content">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="輸入書名、作者或關鍵字">
+                    <button class="btn-search">🔍 搜尋</button>
+                </div>
+
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" title="網格視圖">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                        </svg>
+                        網格
+                    </button>
+                    <button class="view-btn" data-view="list" title="列表視圖">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <rect x="3" y="4" width="2" height="4"></rect>
+                            <rect x="3" y="10" width="2" height="4"></rect>
+                            <rect x="3" y="16" width="2" height="4"></rect>
+                        </svg>
+                        列表
+                    </button>
+                </div>
+
+                <div class="books-grid">
+                    <!-- Books will be loaded dynamically from books.json -->
+                </div>
+            </div>
+
+
+            <!-- My Borrowing Tab -->
+            <div id="my-borrowing" class="tab-content">
+                <div class="borrowing-info">
+                    <h3>借閱規則說明</h3>
+                    <ol>
+                        <li>借閱書籍的借閱期為<strong>30天</strong>。</li>
+                        <li>點選書籍的「我要借閱」，選擇您想要的借閱日期與歸還日期，並填寫借閱單位及姓名。</li>
+                        <li>每人每次可借閱<strong>3本</strong>書籍，歸還後可再借閱。</li>
+                        <li>到期前7日，以電子郵件方式通知您歸還，逾期則停權30日。</li>
+                    </ol>
+                </div>
+
+                <div class="borrowing-records">
+                    <h3>目前借閱紀錄 - 共 <span class="highlight">3</span> 筆</h3>
+
+                    <!-- Borrowing Record 1 -->
+                    <div class="borrowing-record">
+                        <div class="record-header">
+                            <div class="record-number">1-3</div>
+                            <div class="record-book-info">
+                                <strong>書名：</strong>情緒賽局
+                            </div>
+                        </div>
+                        <div class="record-details">
+                            <div class="record-field">
+                                <span class="field-label">借閱日期：</span>
+                                <span class="field-value">115年2月1日至2月27日</span>
+                            </div>
+                            <div class="record-actions">
+                                <button class="btn-renew status-warning">已逾期</button>
+                                <button class="btn-return">歸還日：2月28日</button>
+                            </div>
+                        </div>
+                        <div class="overdue-notice">
+                            *借閱逾期，請於本日歸還，否則停權至115年3月30日
+                        </div>
+                    </div>
+
+                    <!-- Borrowing Record 2 -->
+                    <div class="borrowing-record">
+                        <div class="record-header">
+                            <div class="record-number">2-3</div>
+                            <div class="record-book-info">
+                                <strong>書名：</strong>天文國寶
+                            </div>
+                        </div>
+                        <div class="record-details">
+                            <div class="record-field">
+                                <span class="field-label">借閱日期：</span>
+                                <span class="field-value">115年2月1日至2月27日</span>
+                            </div>
+                            <div class="record-actions">
+                                <button class="btn-renew status-due-soon">即將到期</button>
+                                <button class="btn-return">歸還日：2月28日</button>
+                                <button class="btn-extend">續借</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Borrowing Record 3 -->
+                    <div class="borrowing-record">
+                        <div class="record-header">
+                            <div class="record-number">3-3</div>
+                            <div class="record-book-info">
+                                <strong>書名：</strong>天文國寶
+                            </div>
+                        </div>
+                        <div class="record-details">
+                            <div class="record-field">
+                                <span class="field-label">借閱日期：</span>
+                                <span class="field-value">115年2月1日至2月27日</span>
+                            </div>
+                            <div class="record-actions">
+                                <button class="btn-renew">已歸還</button>
+                                <button class="btn-return">歸還日：2月28日</button>
+                                <button class="btn-extend">續借</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="borrowing-history">
+                    <h3>歷史借閱紀錄 - 共 <span class="highlight">4</span> 筆</h3>
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>序號</th>
+                                <th>書名</th>
+                                <th>借閱日期</th>
+                                <th>歸還日期</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>異見的力量</td>
+                                <td>114年12月30日</td>
+                                <td>115年1月2日</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>異見的力量</td>
+                                <td>115年2月1日</td>
+                                <td>115年2月4日</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>我如何真確理解世界</td>
+                                <td>115年1月20日</td>
+                                <td>115年1月20日</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>情緒賽局</td>
+                                <td></td>
+                                <td>115年4月30日</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Borrow Modal -->
+    <div id="borrowModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">📚 書籍借閱申請</h2>
+                <button class="modal-close" aria-label="關閉">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="book-preview">
+                    <div class="book-preview-cover">
+                        <img id="modalBookCover" src="" alt="書籍封面">
+                    </div>
+                    <div class="book-preview-info">
+                        <h3 id="modalBookTitle">書名</h3>
+                        <p id="modalBookAuthor">作者</p>
+                    </div>
+                </div>
+
+                <form id="borrowForm" class="borrow-form">
+                    <div class="form-group">
+                        <label for="borrowUnit" class="form-label">
+                            <span class="label-text">單位</span>
+                            <span class="label-required">*</span>
+                        </label>
+                        <select id="borrowUnit" name="unit" class="form-input" required>
+                            <option value="">請選擇單位</option>
+                            <option value="段長室">段長室</option>
+                            <option value="施工室">施工室</option>
+                            <option value="養路室">養路室</option>
+                            <option value="產業室">產業室</option>
+                            <option value="職安室">職安室</option>
+                            <option value="政風室">政風室</option>
+                            <option value="人事室">人事室</option>
+                            <option value="總務室">總務室</option>
+                            <option value="苗工所">苗工所</option>
+                            <option value="甲工所">甲工所</option>
+                            <option value="彰工所">彰工所</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="subUnitGroup" style="display: none;">
+                        <label for="borrowSubUnit" class="form-label">
+                            <span class="label-text">道班名稱</span>
+                            <span class="label-required">*</span>
+                        </label>
+                        <input type="text" id="borrowSubUnit" name="subUnit" class="form-input" placeholder="請輸入道班名稱">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="borrowName" class="form-label">
+                            <span class="label-text">姓名</span>
+                            <span class="label-required">*</span>
+                        </label>
+                        <input type="text" id="borrowName" name="name" class="form-input" placeholder="請輸入您的姓名"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="borrowEmployeeId" class="form-label">
+                            <span class="label-text">員工代號</span>
+                            <span class="label-required">*</span>
+                        </label>
+                        <input type="text" id="borrowEmployeeId" name="employeeId" class="form-input"
+                            placeholder="請輸入您的員工代號" required>
+                    </div>
+
+                    <div class="form-info">
+                        <p>📌 借閱期限為 <strong>30天</strong>，請於期限內歸還</p>
+                        <p>📌 每人每次最多可借閱 <strong>3本</strong> 書籍</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-modal-cancel">取消</button>
+                        <button type="submit" class="btn-modal-submit">申請借閱</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
